@@ -15,8 +15,7 @@
 
 #define DEFAULT_SCALE 0.90
 
-- (CGFloat)scale
-{
+- (CGFloat)scale {
     if (!_scale) {
         return DEFAULT_SCALE; // don't allow zero scale
     } else {
@@ -24,16 +23,14 @@
     }
 }
 
-- (void)setScale:(CGFloat)scale
-{
+- (void)setScale:(CGFloat)scale {
     if (scale != _scale) {
         _scale = scale;
         [self setNeedsDisplay]; // any time our scale changes, call for redraw
     }
 }
 
-- (void)pinch:(UIPinchGestureRecognizer *)gesture
-{
+- (void)pinch:(UIPinchGestureRecognizer *)gesture {
     if ((gesture.state == UIGestureRecognizerStateChanged) ||
         (gesture.state == UIGestureRecognizerStateEnded)) {
         self.scale *= gesture.scale; // adjust our scale
@@ -41,18 +38,15 @@
     }
 }
 
-- (void)setup
-{
+- (void)setup {
     self.contentMode = UIViewContentModeRedraw; // if our bounds changes, redraw ourselves
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [self setup]; // get initialized when we come out of a storyboard
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self setup]; // get initialized if someone uses alloc/initWithFrame: to create us
@@ -61,20 +55,35 @@
 }
 
 /******************************************/
-- (void)drawCircleAtPoint:(CGPoint)p withRadius:(CGFloat)radius inContext:(CGContextRef)context
-{
+//
+//  DRAWING METHODS
+//
+/******************************************/
+
+//
+// drawXYAxes
+//
+- (void)drawXYAxes:(CGPoint)p inContext:(CGContextRef)context {
     UIGraphicsPushContext(context);
     CGContextBeginPath(context);
-    CGContextAddArc(context, p.x, p.y, radius, 0, 2*M_PI, YES); // 360 degree (0 to 2pi) arc
+    // Move and draw lines
+    CGContextMoveToPoint(context, p.x, 0);
+    CGContextAddLineToPoint(context, p.x, self.bounds.size.height);    
+    CGContextMoveToPoint(context, 0, p.y);
+    CGContextAddLineToPoint(context, self.bounds.size.width, p.y);
+    // Lines don't show up until they have a width/color
     CGContextStrokePath(context);
     UIGraphicsPopContext();
 }
 
-- (void)drawRect:(CGRect)rect
-{
+//
+// drawRect
+//
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGPoint midPoint; // center of our bounds in our coordinate system
+    // Compute midpoint in our coordinate system
+    CGPoint midPoint; 
     midPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
     midPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
     
@@ -82,55 +91,18 @@
     if (self.bounds.size.height < self.bounds.size.width) size = self.bounds.size.height / 2;
     size *= self.scale; // scale is percentage of full view size
     
-    CGContextSetLineWidth(context, 5.0);
-    [[UIColor blueColor] setStroke];
+    // Set Line width and color
+    CGContextSetLineWidth(context, 2.0);
+    [[UIColor grayColor] setStroke];
     
-    [self drawCircleAtPoint:midPoint withRadius:size inContext:context]; // head
-    
-#define EYE_H 0.35
-#define EYE_V 0.35
-#define EYE_RADIUS 0.10
-    
-    CGPoint eyePoint;
-    eyePoint.x = midPoint.x - size * EYE_H;
-    eyePoint.y = midPoint.y - size * EYE_V;
-    
-    [self drawCircleAtPoint:eyePoint withRadius:size * EYE_RADIUS inContext:context]; // left eye
-    eyePoint.x += size * EYE_H * 2;
-    [self drawCircleAtPoint:eyePoint withRadius:size * EYE_RADIUS inContext:context]; // right eye
-    
-#define MOUTH_H 0.45
-#define MOUTH_V 0.40
-#define MOUTH_SMILE 0.25
-    
-    CGPoint mouthStart;
-    mouthStart.x = midPoint.x - MOUTH_H * size;
-    mouthStart.y = midPoint.y + MOUTH_V * size;
-    CGPoint mouthEnd = mouthStart;
-    mouthEnd.x += MOUTH_H * size * 2;
-    CGPoint mouthCP1 = mouthStart;
-    mouthCP1.x += MOUTH_H * size * 2/3;
-    CGPoint mouthCP2 = mouthEnd;
-    mouthCP2.x -= MOUTH_H * size * 2/3;
-    
-    float smile = 0.0; // [self.dataSource smileForFaceView:self]; // delegate our View's data
-    if (smile < -1) smile = -1;
-    if (smile > 1) smile = 1;
-    
-    CGFloat smileOffset = MOUTH_SMILE * size * smile;
-    mouthCP1.y += smileOffset;
-    mouthCP2.y += smileOffset;
-    
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, mouthStart.x, mouthStart.y);
-    CGContextAddCurveToPoint(context, mouthCP1.x, mouthCP2.y, mouthCP2.x, mouthCP2.y, mouthEnd.x, mouthEnd.y); // bezier curve
-    CGContextStrokePath(context);
+    // Draw X and Y Axis
+    [self drawXYAxes:midPoint inContext:context];
+
 }
 
 /******************************************/
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
