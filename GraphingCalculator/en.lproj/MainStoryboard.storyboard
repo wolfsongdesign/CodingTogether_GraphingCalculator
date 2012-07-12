@@ -401,7 +401,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="graphKeyPressed:" destination="2" eventType="touchUpInside" id="Mby-SD-Gxe"/>
+                                    <segue destination="OXC-Jn-uig" kind="push" id="z5U-Yk-QWH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -415,6 +415,36 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="465" y="215"/>
+        </scene>
+        <scene sceneID="NBC-Lo-qeI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bol-0M-Bih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="OXC-Jn-uig" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vJd-ZQ-lSh">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="cr4-QX-7K6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Graph goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="plZ-Yy-dwC">
+                                        <rect key="frame" x="96" y="197" width="128" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fWC-RU-wbk"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="882" y="215"/>
         </scene>
         <scene sceneID="KbI-ia-Bwc">
             <objects>
