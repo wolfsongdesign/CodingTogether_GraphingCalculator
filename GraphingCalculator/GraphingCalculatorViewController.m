@@ -8,8 +8,12 @@
 
 #import "GraphingCalculatorViewController.h"
 #import "CalculatorBrain.h"
+#import "GraphView.h"
+
 
 @interface GraphingCalculatorViewController()
+@property (nonatomic, weak) IBOutlet GraphView *graphView;
+
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (weak, nonatomic) IBOutlet UILabel *programDescriptionLabel;
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
@@ -25,6 +29,7 @@
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
 @synthesize userEnteredADecimal = _userEnteredADecimal;
 @synthesize brain = _brain;
+@synthesize graphView = _graphView;
 
 //
 // Lazy instantiation of Array 
@@ -203,9 +208,19 @@
 //
 // graphKeyPressed
 //
-- (IBAction)graphKeyPressed:(UIButton *)sender {
-    //
+- (void)setAndShowGraph:(id)programData {
+    [self performSegueWithIdentifier:@"ShowGraph" sender:self];
+/*    self.programData = programData;
+    // if in split view
+    if ([self splitViewHappinessViewController]) {
+        // just set happiness in detail
+        [self splitViewHappinessViewController].happiness = programData;  
+    } else {
+        [self performSegueWithIdentifier:@"ShowGraph" sender:self];
+    }
+ */
 }
+
 
 //
 // variablesDisplayStringFromVariablesUsedSet

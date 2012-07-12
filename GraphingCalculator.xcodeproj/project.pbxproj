@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A1D886C415AE609E00E826EA /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D886C315AE609E00E826EA /* AxesDrawer.m */; };
+		A1D886CC15AE6EAB00E826EA /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D886CB15AE6EAB00E826EA /* GraphView.m */; };
 		A1FAC34E15AE5455005EEE94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FAC34D15AE5455005EEE94 /* UIKit.framework */; };
 		A1FAC35015AE5455005EEE94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FAC34F15AE5455005EEE94 /* Foundation.framework */; };
 		A1FAC35215AE5455005EEE94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FAC35115AE5455005EEE94 /* CoreGraphics.framework */; };
@@ -37,6 +38,8 @@
 /* Begin PBXFileReference section */
 		A1D886C215AE609E00E826EA /* AxesDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxesDrawer.h; sourceTree = "<group>"; };
 		A1D886C315AE609E00E826EA /* AxesDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxesDrawer.m; sourceTree = "<group>"; };
+		A1D886CA15AE6EAB00E826EA /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		A1D886CB15AE6EAB00E826EA /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		A1FAC34915AE5455005EEE94 /* GraphingCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphingCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAC34D15AE5455005EEE94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1FAC34F15AE5455005EEE94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,8 @@
 				A1D886C315AE609E00E826EA /* AxesDrawer.m */,
 				A1FAC38615AE54D5005EEE94 /* CalculatorBrain.h */,
 				A1FAC38715AE54D5005EEE94 /* CalculatorBrain.m */,
+				A1D886CA15AE6EAB00E826EA /* GraphView.h */,
+				A1D886CB15AE6EAB00E826EA /* GraphView.m */,
 				A1FAC35C15AE5455005EEE94 /* GraphingCalculatorAppDelegate.h */,
 				A1FAC35D15AE5455005EEE94 /* GraphingCalculatorAppDelegate.m */,
 				A1FAC35F15AE5455005EEE94 /* MainStoryboard.storyboard */,
@@ -273,6 +278,7 @@
 				A1FAC36415AE5455005EEE94 /* GraphingCalculatorViewController.m in Sources */,
 				A1FAC38815AE54D5005EEE94 /* CalculatorBrain.m in Sources */,
 				A1D886C415AE609E00E826EA /* AxesDrawer.m in Sources */,
+				A1D886CC15AE6EAB00E826EA /* GraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
