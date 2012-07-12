@@ -20,6 +20,7 @@
 		A1FAC36E15AE5455005EEE94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FAC34F15AE5455005EEE94 /* Foundation.framework */; };
 		A1FAC37615AE5455005EEE94 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1FAC37415AE5455005EEE94 /* InfoPlist.strings */; };
 		A1FAC37915AE5455005EEE94 /* GraphingCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAC37815AE5455005EEE94 /* GraphingCalculatorTests.m */; };
+		A1FAC38815AE54D5005EEE94 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAC38715AE54D5005EEE94 /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,21 +38,23 @@
 		A1FAC34D15AE5455005EEE94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1FAC34F15AE5455005EEE94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A1FAC35115AE5455005EEE94 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A1FAC35515AE5455005EEE94 /* GraphingCalculator-Info.plist */ = {isa = PBXFileReference; path = "GraphingCalculator-Info.plist"; sourceTree = "<group>"; };
+		A1FAC35515AE5455005EEE94 /* GraphingCalculator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GraphingCalculator-Info.plist"; sourceTree = "<group>"; };
 		A1FAC35715AE5455005EEE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1FAC35915AE5455005EEE94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A1FAC35B15AE5455005EEE94 /* GraphingCalculator-Prefix.pch */ = {isa = PBXFileReference; path = "GraphingCalculator-Prefix.pch"; sourceTree = "<group>"; };
-		A1FAC35C15AE5455005EEE94 /* GraphingCalculatorAppDelegate.h */ = {isa = PBXFileReference; path = GraphingCalculatorAppDelegate.h; sourceTree = "<group>"; };
+		A1FAC35B15AE5455005EEE94 /* GraphingCalculator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GraphingCalculator-Prefix.pch"; sourceTree = "<group>"; };
+		A1FAC35C15AE5455005EEE94 /* GraphingCalculatorAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphingCalculatorAppDelegate.h; sourceTree = "<group>"; };
 		A1FAC35D15AE5455005EEE94 /* GraphingCalculatorAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphingCalculatorAppDelegate.m; sourceTree = "<group>"; };
 		A1FAC36015AE5455005EEE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		A1FAC36215AE5455005EEE94 /* GraphingCalculatorViewController.h */ = {isa = PBXFileReference; path = GraphingCalculatorViewController.h; sourceTree = "<group>"; };
+		A1FAC36215AE5455005EEE94 /* GraphingCalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphingCalculatorViewController.h; sourceTree = "<group>"; };
 		A1FAC36315AE5455005EEE94 /* GraphingCalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphingCalculatorViewController.m; sourceTree = "<group>"; };
 		A1FAC36A15AE5455005EEE94 /* GraphingCalculatorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphingCalculatorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAC36B15AE5455005EEE94 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		A1FAC37315AE5455005EEE94 /* GraphingCalculatorTests-Info.plist */ = {isa = PBXFileReference; path = "GraphingCalculatorTests-Info.plist"; sourceTree = "<group>"; };
+		A1FAC37315AE5455005EEE94 /* GraphingCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GraphingCalculatorTests-Info.plist"; sourceTree = "<group>"; };
 		A1FAC37515AE5455005EEE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A1FAC37715AE5455005EEE94 /* GraphingCalculatorTests.h */ = {isa = PBXFileReference; path = GraphingCalculatorTests.h; sourceTree = "<group>"; };
+		A1FAC37715AE5455005EEE94 /* GraphingCalculatorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphingCalculatorTests.h; sourceTree = "<group>"; };
 		A1FAC37815AE5455005EEE94 /* GraphingCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphingCalculatorTests.m; sourceTree = "<group>"; };
+		A1FAC38615AE54D5005EEE94 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
+		A1FAC38715AE54D5005EEE94 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 		A1FAC35315AE5455005EEE94 /* GraphingCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				A1FAC38615AE54D5005EEE94 /* CalculatorBrain.h */,
+				A1FAC38715AE54D5005EEE94 /* CalculatorBrain.m */,
 				A1FAC35C15AE5455005EEE94 /* GraphingCalculatorAppDelegate.h */,
 				A1FAC35D15AE5455005EEE94 /* GraphingCalculatorAppDelegate.m */,
 				A1FAC35F15AE5455005EEE94 /* MainStoryboard.storyboard */,
@@ -261,6 +266,7 @@
 				A1FAC35A15AE5455005EEE94 /* main.m in Sources */,
 				A1FAC35E15AE5455005EEE94 /* GraphingCalculatorAppDelegate.m in Sources */,
 				A1FAC36415AE5455005EEE94 /* GraphingCalculatorViewController.m in Sources */,
+				A1FAC38815AE54D5005EEE94 /* CalculatorBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
