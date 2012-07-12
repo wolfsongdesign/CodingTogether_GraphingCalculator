@@ -431,12 +431,12 @@
         <scene sceneID="NBC-Lo-qeI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bol-0M-Bih" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="OXC-Jn-uig" customClass="GraphingCalculatorViewController" sceneMemberID="viewController">
+                <viewController id="OXC-Jn-uig" customClass="GraphViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vJd-ZQ-lSh">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="cr4-QX-7K6" customClass="GraphView">
+                            <view contentMode="scaleToFill" id="2iW-5R-bCI" customClass="GraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -445,6 +445,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="fWC-RU-wbk"/>
+                    <connections>
+                        <outlet property="graphView" destination="2iW-5R-bCI" id="Bi1-dR-0u7"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="882" y="215"/>
@@ -474,11 +477,16 @@
                 <relationship kind="outlet" name="dataSource"/>
             </relationships>
         </class>
+        <class className="GraphViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
+            </relationships>
+        </class>
         <class className="GraphingCalculatorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphingCalculatorViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="display" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
                 <relationship kind="outlet" name="programDescriptionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

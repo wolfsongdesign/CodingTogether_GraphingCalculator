@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol GraphViewDataSource
-@end
+@class GraphView;
 
+@protocol GraphViewDataSource
+- (int)dataForGraph:(GraphView *)sender;
+@end
 
 @interface GraphView : UIView
 

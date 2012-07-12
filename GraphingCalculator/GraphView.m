@@ -13,6 +13,7 @@
 @synthesize dataSource = _dataSource;
 @synthesize scale = _scale;
 
+
 #define DEFAULT_SCALE 0.90
 
 - (CGFloat)scale {
@@ -54,6 +55,8 @@
     return self;
 }
 
+
+
 /******************************************/
 //
 //  DRAWING METHODS
@@ -72,6 +75,36 @@
     CGContextMoveToPoint(context, 0, p.y);
     CGContextAddLineToPoint(context, self.bounds.size.width, p.y);
     // Lines don't show up until they have a width/color
+    CGContextStrokePath(context);
+    UIGraphicsPopContext();
+}
+
+//
+//
+//
+- (void)drawCircleAtPoint:(CGPoint)p withRadius:(CGFloat)radius inContext:(CGContextRef)context
+{
+    UIGraphicsPushContext(context);
+    CGContextBeginPath(context);
+    CGContextAddArc(context, p.x, p.y, radius, 0, 2*M_PI, YES); // 360 degree (0 to 2pi) arc
+    CGContextStrokePath(context);
+    UIGraphicsPopContext();
+}
+
+//
+// drawTestData
+//
+- (void)drawTestData:(CGPoint)p inContext:(CGContextRef)context {
+    UIGraphicsPushContext(context);
+    CGContextBeginPath(context);
+    // Move and draw lines
+    CGContextMoveToPoint(context, self.bounds.size.width / 2, self.bounds.size.height /2);
+    CGContextAddLineToPoint(context, p.x, p.y);
+    // Lines don't show up until they have a width/color
+    // Set Line width and color
+    CGContextSetLineWidth(context, 1.0);
+    [[UIColor redColor] setStroke];
+
     CGContextStrokePath(context);
     UIGraphicsPopContext();
 }
@@ -97,7 +130,53 @@
     
     // Draw X and Y Axis
     [self drawXYAxes:midPoint inContext:context];
+    
+    // Test data
+    int foo = [self.dataSource dataForGraph:self];
+    NSLog(@"GraphView: %d", foo);
+    CGPoint testPoint;
+    testPoint.x = foo;
+    testPoint.y = foo;
+    [self drawTestData:testPoint inContext:context];
 
+    [self drawCircleAtPoint:midPoint withRadius:size inContext:context]; // head
+    
+#define EYE_H 0.35
+#define EYE_V 0.35
+#define EYE_RADIUS 0.10
+    
+    CGPoint eyePoint;
+    eyePoint.x = midPoint.x - size * EYE_H;
+    eyePoint.y = midPoint.y - size * EYE_V;
+    
+    [self drawCircleAtPoint:eyePoint withRadius:size * EYE_RADIUS inContext:context]; // left eye
+    eyePoint.x += size * EYE_H * 2;
+    [self drawCircleAtPoint:eyePoint withRadius:size * EYE_RADIUS inContext:context]; // right eye
+    
+#define MOUTH_H 0.45
+#define MOUTH_V 0.40
+#define MOUTH_SMILE 0.25
+    
+    CGPoint mouthStart;
+    mouthStart.x = midPoint.x - MOUTH_H * size;
+    mouthStart.y = midPoint.y + MOUTH_V * size;
+    CGPoint mouthEnd = mouthStart;
+    mouthEnd.x += MOUTH_H * size * 2;
+    CGPoint mouthCP1 = mouthStart;
+    mouthCP1.x += MOUTH_H * size * 2/3;
+    CGPoint mouthCP2 = mouthEnd;
+    mouthCP2.x -= MOUTH_H * size * 2/3;
+    
+    float smile = 1.0; // this should be delegated! it's our View's data!
+    
+    CGFloat smileOffset = MOUTH_SMILE * size * smile;
+    mouthCP1.y += smileOffset;
+    mouthCP2.y += smileOffset;
+    
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, mouthStart.x, mouthStart.y);
+    CGContextAddCurveToPoint(context, mouthCP1.x, mouthCP2.y, mouthCP2.x, mouthCP2.y, mouthEnd.x, mouthEnd.y); // bezier curve
+    CGContextStrokePath(context);
 }
 
 /******************************************/

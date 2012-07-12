@@ -8,12 +8,10 @@
 
 #import "GraphingCalculatorViewController.h"
 #import "CalculatorBrain.h"
-#import "GraphView.h"
+#import "GraphViewController.h"
 
 
 @interface GraphingCalculatorViewController()
-@property (nonatomic, weak) IBOutlet GraphView *graphView;
-
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (weak, nonatomic) IBOutlet UILabel *programDescriptionLabel;
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
@@ -29,7 +27,6 @@
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
 @synthesize userEnteredADecimal = _userEnteredADecimal;
 @synthesize brain = _brain;
-@synthesize graphView = _graphView;
 
 //
 // Lazy instantiation of Array 
@@ -203,6 +200,18 @@
     // Set programDescription label
     self.programDescriptionLabel.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
     self.display.text = [NSString stringWithFormat:@"%g", result];
+}
+
+//
+// prepareForSegue
+//
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowGraph"]) {
+        NSLog(@"GraphingCalculatorView: %d", 44);
+
+        [segue.destinationViewController setTestNumber:44]; //[self.display.text intValue]];
+    }
 }
 
 //
