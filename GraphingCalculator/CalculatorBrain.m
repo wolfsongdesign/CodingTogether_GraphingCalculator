@@ -99,7 +99,7 @@
 //
 + (BOOL)isVariable:(NSString *)variable {
     // Set of variable
-    NSSet *set = [NSSet setWithObjects: @"x", @"y", @"a", @"b", nil];
+    NSSet *set = [NSSet setWithObjects: @"x", nil];
     
     return [set containsObject:variable];
 }

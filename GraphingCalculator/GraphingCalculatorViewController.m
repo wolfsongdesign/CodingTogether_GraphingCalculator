@@ -12,7 +12,6 @@
 @interface GraphingCalculatorViewController()
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (weak, nonatomic) IBOutlet UILabel *programDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *variableValueLabel;
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic) BOOL userEnteredADecimal;
 @property (strong, nonatomic) CalculatorBrain *brain;
@@ -23,7 +22,6 @@
 
 @synthesize display = _display;
 @synthesize programDescriptionLabel = _programDescriptionLabel;
-@synthesize variableValueLabel = _variableValueLabel;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
 @synthesize userEnteredADecimal = _userEnteredADecimal;
 @synthesize brain = _brain;
@@ -64,7 +62,6 @@
     // Clear display(s)
     self.display.text = @"0"; 
     self.programDescriptionLabel.text = @" ";
-    self.variableValueLabel.text = @" ";
     // Clear stack
     [self.brain performOperation: @"CLEAR"];
 }
@@ -204,6 +201,13 @@
 }
 
 //
+// graphKeyPressed
+//
+- (IBAction)graphKeyPressed:(UIButton *)sender {
+    //
+}
+
+//
 // variablesDisplayStringFromVariablesUsedSet
 //
 - (NSString *)variablesDisplayStringFromVariablesUsedSet:(NSSet *)variablesUsedSet withDictionary:(NSDictionary *)dictionary {
@@ -228,123 +232,11 @@
     }
 }
 
-//
-//
-//
-- (IBAction)testOneKeyPressed:(id)sender {
-    // Run tests
-    CalculatorBrain *testBrain = [self brain];
-    
-    // Setup the brain
-    [testBrain pushVariable:@"x"];
-    [testBrain pushVariable:@"x"];
-    [testBrain pushOperation:@"*"];
-    [testBrain pushVariable:@"y"];
-    [testBrain pushVariable:@"y"];
-    [testBrain pushOperation:@"*"];
-    [testBrain pushOperation:@"+"];
-    [testBrain pushOperation:@"sqrt"];  
-    
-    // Retrieve the program
-    NSArray *prog = testBrain.program;
-    
-    // Setup the dictionary
-    NSDictionary *dictionary = 
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     [NSNumber numberWithDouble:3], @"x",
-     [NSNumber numberWithDouble:4], @"y", nil];
-    
-    // Run the program with variables
-    double result = [CalculatorBrain runProgram:prog usingVariableValues:dictionary];
-    self.display.text = [NSString stringWithFormat:@"%g", result];
-    
-    // Display program description
-    self.programDescriptionLabel.text = [[CalculatorBrain class] descriptionOfProgram:prog];
-    
-    // Set of used variables
-    NSSet *variablesUsedSet = [CalculatorBrain variablesUsedInProgram:prog];
-    // Display variables used
-    self.variableValueLabel.text = [self variablesDisplayStringFromVariablesUsedSet:variablesUsedSet withDictionary:dictionary];
-}
-
-//
-//
-//
-- (IBAction)testTwoKeyPressed:(id)sender {
-    // Run tests
-    CalculatorBrain *testBrain = [self brain];
-    
-    // Setup the brain
-    [testBrain pushOperand:3.25];
-    [testBrain pushOperand:6];
-    [testBrain pushOperation:@"+"];
-    [testBrain pushOperand:14];
-    [testBrain pushOperation:@"*"];
-    [testBrain pushVariable:@"x"];
-    [testBrain pushVariable:@"y"];
-    [testBrain pushOperation:@"+"];  
-    
-    // Retrieve the program
-    NSArray *prog = testBrain.program;
-    
-    // Setup the dictionary
-    NSDictionary *dictionary = 
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     [NSNumber numberWithDouble:-4], @"x",
-     [NSNumber numberWithDouble:3], @"y", nil];
-    
-    // Run the program with variables
-    double result = [CalculatorBrain runProgram:prog usingVariableValues:dictionary];
-    self.display.text = [NSString stringWithFormat:@"%g", result];
-    
-    // Display program description
-    self.programDescriptionLabel.text = [[CalculatorBrain class] descriptionOfProgram:prog];
-    
-    // Set of used variables
-    NSSet *variablesUsedSet = [CalculatorBrain variablesUsedInProgram:prog];
-    // Display variables used
-    self.variableValueLabel.text = [self variablesDisplayStringFromVariablesUsedSet:variablesUsedSet withDictionary:dictionary];
-}
-
-//
-//
-//
-- (IBAction)testThreeKeyPressed:(id)sender {
-    // Run tests
-    CalculatorBrain *testBrain = [self brain];
-    
-    // Setup the brain
-    [testBrain pushVariable:@"x"];
-    [testBrain pushVariable:@"y"];
-    [testBrain pushOperation:@"/"]; 
-    
-    // Retrieve the program
-    NSArray *prog = testBrain.program;
-    
-    // Setup the dictionary
-    NSDictionary *dictionary = 
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     [NSNumber numberWithDouble:3], @"x",
-     [NSNumber numberWithDouble:0], @"y", nil];
-    
-    // Run the program with variables
-    double result = [CalculatorBrain runProgram:prog usingVariableValues:dictionary];
-    self.display.text = [NSString stringWithFormat:@"%g", result];
-    
-    // Display program description
-    self.programDescriptionLabel.text = [[CalculatorBrain class] descriptionOfProgram:prog];
-    
-    // Set of used variables
-    NSSet *variablesUsedSet = [CalculatorBrain variablesUsedInProgram:prog];
-    // Display variables used
-    self.variableValueLabel.text = [self variablesDisplayStringFromVariablesUsedSet:variablesUsedSet withDictionary:dictionary];
-}
 
 
 - (void)viewDidUnload {
     [self setDisplay:nil];
     [self setProgramDescriptionLabel:nil];
-    [self setVariableValueLabel:nil];
     [super viewDidUnload];
 }
 @end
