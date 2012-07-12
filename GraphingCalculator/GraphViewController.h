@@ -10,7 +10,9 @@
 
 @interface GraphViewController : UIViewController
 
-// Test data
-@property (nonatomic) int testNumber;
+@property (weak, nonatomic) IBOutlet UILabel *programDisplayOnGraphView;
+
+// Program data
+@property (nonatomic) int programData;
 
 @end

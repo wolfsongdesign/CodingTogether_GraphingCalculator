@@ -7,12 +7,16 @@
 //
 
 #import "GraphView.h"
+#import "AxesDrawer.h"
 
 @implementation GraphView
 
 @synthesize dataSource = _dataSource;
 @synthesize scale = _scale;
 
+@synthesize offsetx=_offsetx;
+@synthesize offsety=_offsety;
+@synthesize midPoint=_midPoint;
 
 #define DEFAULT_SCALE 0.90
 
@@ -34,8 +38,35 @@
 - (void)pinch:(UIPinchGestureRecognizer *)gesture {
     if ((gesture.state == UIGestureRecognizerStateChanged) ||
         (gesture.state == UIGestureRecognizerStateEnded)) {
-        self.scale *= gesture.scale; // adjust our scale
-        gesture.scale = 1;           // reset gestures scale to 1 (so future changes are incremental, not cumulative)
+        // Adjust scale
+        self.scale *= gesture.scale; 
+        gesture.scale = 1;
+    }
+}
+
+- (void)tap:(UITapGestureRecognizer *)gesture
+{
+    if ((gesture.state == UIGestureRecognizerStateChanged) ||
+        (gesture.state == UIGestureRecognizerStateEnded)) {
+        CGPoint tapPoint = [gesture locationInView:gesture.view];
+        //NSLog(@"%g, %g", tapPoint.x, tapPoint.y);
+        self.midPoint=tapPoint;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)pan:(UIPanGestureRecognizer *)gesture
+{
+    if ((gesture.state == UIGestureRecognizerStateChanged) ||
+        (gesture.state == UIGestureRecognizerStateEnded)) {
+        CGPoint translation = [gesture translationInView:self];
+        // NSLog(@"%g, %g", translation.x, translation.y);
+        self.offsetx -= -translation.x / 2;
+        self.offsety -= -translation.y / 2;
+        [self setNeedsDisplay];
+        
+        // reset
+        [gesture setTranslation:CGPointZero inView:self];
     }
 }
 
@@ -120,6 +151,11 @@
     midPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
     midPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
     
+    // Drawing code
+    CGRect baseRect = self.bounds;
+    baseRect.origin.x += self.offsetx;
+    baseRect.origin.y += self.offsety;
+    
     CGFloat size = self.bounds.size.width / 2;
     if (self.bounds.size.height < self.bounds.size.width) size = self.bounds.size.height / 2;
     size *= self.scale; // scale is percentage of full view size
@@ -130,15 +166,16 @@
     
     // Draw X and Y Axis
     [self drawXYAxes:midPoint inContext:context];
-    
+    [AxesDrawer drawAxesInRect:baseRect originAtPoint:self.midPoint scale:self.scale];
+
     // Test data
     int foo = [self.dataSource dataForGraph:self];
-    NSLog(@"GraphView: %d", foo);
     CGPoint testPoint;
     testPoint.x = foo;
     testPoint.y = foo;
     [self drawTestData:testPoint inContext:context];
 
+    // Draw face
     [self drawCircleAtPoint:midPoint withRadius:size inContext:context]; // head
     
 #define EYE_H 0.35

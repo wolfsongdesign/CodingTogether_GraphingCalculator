@@ -208,9 +208,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowGraph"]) {
-        NSLog(@"GraphingCalculatorView: %d", 44);
-
-        [segue.destinationViewController setTestNumber:44]; //[self.display.text intValue]];
+        [segue.destinationViewController setProgramData:[self.display.text intValue]];
     }
 }
 

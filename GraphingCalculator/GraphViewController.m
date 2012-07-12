@@ -14,17 +14,16 @@
 @end
 
 @implementation GraphViewController
+@synthesize programDisplayOnGraphView = _programDisplayOnGraphView;
 
-@synthesize testNumber = _testNumber;
+@synthesize programData = _programData;
 @synthesize graphView = _graphView;
 
 //
 //
 //
-- (void)setTestNumber:(int)testNumber {
-    NSLog(@"GraphViewController: %d", testNumber);
-
-    _testNumber = testNumber;
+- (void)setProgramData:(int)programData {
+    _programData = programData;
     [self.graphView setNeedsDisplay]; // any time our Model changes, redraw our View
 }
 
@@ -34,17 +33,27 @@
 - (void)setGraphView:(GraphView *)graphView
 {
     _graphView = graphView;
-    // enable pinch gestures in the FaceView using its pinch: handler
+    
+    // Add gestures
+    // Pinch for scaling
     [self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
+    // Pan for moving graph
+    [self.graphView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pan:)]]; 
+    // Triple-tap for moving origin
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(tap:)];
+    tapRecognizer.numberOfTapsRequired=3;
+    [self.graphView addGestureRecognizer:tapRecognizer];
+    
+    //
+    self.graphView.dataSource = self;
 }
 
 //
-//
+// dataForGraph
 //
 - (int)dataForGraph:(GraphView *)sender {
-    NSLog(@"dataForGraph: %d", self.testNumber);
-//    return self.testNumber;
-    return 44;
+    self.programDisplayOnGraphView.text = [NSString stringWithFormat:@"%d", self.programData];
+    return self.programData;
 }
 
 /**************/
@@ -86,6 +95,7 @@
 - (void)viewDidUnload
 {
     [self setGraphView:nil];
+    [self setProgramDisplayOnGraphView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

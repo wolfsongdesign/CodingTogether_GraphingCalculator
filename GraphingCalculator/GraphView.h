@@ -17,7 +17,13 @@
 @interface GraphView : UIView
 
 @property (nonatomic) CGFloat scale;
+@property (nonatomic) CGFloat offsetx;
+@property (nonatomic) CGFloat offsety;
+@property (nonatomic,assign) CGPoint midPoint;
+// Pinch for scaling graph
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
+// Pan for moving graph
+- (void)pan:(UIPanGestureRecognizer *)gesture;
 
 @property (nonatomic, weak) IBOutlet id <GraphViewDataSource> dataSource;
 
