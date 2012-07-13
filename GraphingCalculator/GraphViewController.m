@@ -39,9 +39,9 @@
     [self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
     // Pan for moving graph
     [self.graphView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pan:)]]; 
-    // Triple-tap for moving origin
+    // Tap three times for moving origin
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(tap:)];
-    tapRecognizer.numberOfTapsRequired=3;
+    tapRecognizer.numberOfTapsRequired = 3;
     [self.graphView addGestureRecognizer:tapRecognizer];
     
     //

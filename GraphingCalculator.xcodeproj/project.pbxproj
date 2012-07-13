@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1D886C415AE609E00E826EA /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D886C315AE609E00E826EA /* AxesDrawer.m */; };
+		A13356EF15AF987700811668 /* iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13356EE15AF987700811668 /* iPad_Storyboard.storyboard */; };
+		A1AD3A6415B0E2630093E952 /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AD3A6315B0E2630093E952 /* AxesDrawer.m */; };
 		A1D886CC15AE6EAB00E826EA /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D886CB15AE6EAB00E826EA /* GraphView.m */; };
 		A1D886CF15AE945700E826EA /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D886CE15AE945700E826EA /* GraphViewController.m */; };
 		A1FAC34E15AE5455005EEE94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FAC34D15AE5455005EEE94 /* UIKit.framework */; };
@@ -37,8 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A1D886C215AE609E00E826EA /* AxesDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxesDrawer.h; sourceTree = "<group>"; };
-		A1D886C315AE609E00E826EA /* AxesDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxesDrawer.m; sourceTree = "<group>"; };
+		A13356EE15AF987700811668 /* iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Storyboard.storyboard; sourceTree = "<group>"; };
+		A1AD3A6215B0E2630093E952 /* AxesDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxesDrawer.h; sourceTree = "<group>"; };
+		A1AD3A6315B0E2630093E952 /* AxesDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxesDrawer.m; sourceTree = "<group>"; };
 		A1D886CA15AE6EAB00E826EA /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		A1D886CB15AE6EAB00E826EA /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		A1D886CD15AE945700E826EA /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
@@ -123,8 +125,8 @@
 		A1FAC35315AE5455005EEE94 /* GraphingCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				A1D886C215AE609E00E826EA /* AxesDrawer.h */,
-				A1D886C315AE609E00E826EA /* AxesDrawer.m */,
+				A1AD3A6215B0E2630093E952 /* AxesDrawer.h */,
+				A1AD3A6315B0E2630093E952 /* AxesDrawer.m */,
 				A1FAC38615AE54D5005EEE94 /* CalculatorBrain.h */,
 				A1FAC38715AE54D5005EEE94 /* CalculatorBrain.m */,
 				A1D886CA15AE6EAB00E826EA /* GraphView.h */,
@@ -134,6 +136,7 @@
 				A1FAC35C15AE5455005EEE94 /* GraphingCalculatorAppDelegate.h */,
 				A1FAC35D15AE5455005EEE94 /* GraphingCalculatorAppDelegate.m */,
 				A1FAC35F15AE5455005EEE94 /* MainStoryboard.storyboard */,
+				A13356EE15AF987700811668 /* iPad_Storyboard.storyboard */,
 				A1FAC36215AE5455005EEE94 /* GraphingCalculatorViewController.h */,
 				A1FAC36315AE5455005EEE94 /* GraphingCalculatorViewController.m */,
 				A1FAC35415AE5455005EEE94 /* Supporting Files */,
@@ -244,6 +247,7 @@
 			files = (
 				A1FAC35815AE5455005EEE94 /* InfoPlist.strings in Resources */,
 				A1FAC36115AE5455005EEE94 /* MainStoryboard.storyboard in Resources */,
+				A13356EF15AF987700811668 /* iPad_Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +286,9 @@
 				A1FAC35E15AE5455005EEE94 /* GraphingCalculatorAppDelegate.m in Sources */,
 				A1FAC36415AE5455005EEE94 /* GraphingCalculatorViewController.m in Sources */,
 				A1FAC38815AE54D5005EEE94 /* CalculatorBrain.m in Sources */,
-				A1D886C415AE609E00E826EA /* AxesDrawer.m in Sources */,
 				A1D886CC15AE6EAB00E826EA /* GraphView.m in Sources */,
 				A1D886CF15AE945700E826EA /* GraphViewController.m in Sources */,
+				A1AD3A6415B0E2630093E952 /* AxesDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +389,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraphingCalculator/GraphingCalculator-Prefix.pch";
 				INFOPLIST_FILE = "GraphingCalculator/GraphingCalculator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -396,7 +402,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GraphingCalculator/GraphingCalculator-Prefix.pch";
 				INFOPLIST_FILE = "GraphingCalculator/GraphingCalculator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
