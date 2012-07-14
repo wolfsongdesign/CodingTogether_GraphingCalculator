@@ -209,6 +209,10 @@
 {
     if ([segue.identifier isEqualToString:@"ShowGraph"]) {
         [segue.destinationViewController setProgramData:[self.display.text intValue]];
+//        [segue.destinationViewController setProgram:self.programToGraph];
+//        [segue.destinationViewController setDescriptionLabel:[CalculatorBrain descriptionOfProgram:self.programToGraph]];
+// see:
+        // http://stackoverflow.com/questions/9537332/ios-uilabel-on-new-view-controller-not-updating-when-using-segue
     }
 }
 

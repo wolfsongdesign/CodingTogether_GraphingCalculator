@@ -97,18 +97,18 @@
 //
 // drawXYAxes
 //
-- (void)drawXYAxes:(CGPoint)p inContext:(CGContextRef)context {
-    UIGraphicsPushContext(context);
-    CGContextBeginPath(context);
-    // Move and draw lines
-    CGContextMoveToPoint(context, p.x, 0);
-    CGContextAddLineToPoint(context, p.x, self.bounds.size.height);    
-    CGContextMoveToPoint(context, 0, p.y);
-    CGContextAddLineToPoint(context, self.bounds.size.width, p.y);
-    // Lines don't show up until they have a width/color
-    CGContextStrokePath(context);
-    UIGraphicsPopContext();
-}
+//- (void)drawXYAxes:(CGPoint)p inContext:(CGContextRef)context {
+//    UIGraphicsPushContext(context);
+//    CGContextBeginPath(context);
+//    // Move and draw lines
+//    CGContextMoveToPoint(context, p.x, 0);
+//    CGContextAddLineToPoint(context, p.x, self.bounds.size.height);    
+//    CGContextMoveToPoint(context, 0, p.y);
+//    CGContextAddLineToPoint(context, self.bounds.size.width, p.y);
+//    // Lines don't show up until they have a width/color
+//    CGContextStrokePath(context);
+//    UIGraphicsPopContext();
+//}
 
 //
 //
@@ -165,7 +165,7 @@
     [[UIColor grayColor] setStroke];
     
     // Draw X and Y Axis
-    [self drawXYAxes:midPoint inContext:context];
+//    [self drawXYAxes:midPoint inContext:context];
     [AxesDrawer drawAxesInRect:baseRect originAtPoint:self.midPoint scale:self.scale];
 
     // Test data

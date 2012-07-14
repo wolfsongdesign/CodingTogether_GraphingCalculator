@@ -52,7 +52,6 @@
 // dataForGraph
 //
 - (int)dataForGraph:(GraphView *)sender {
-    self.programDisplayOnGraphView.text = [NSString stringWithFormat:@"%d", self.programData];
     return self.programData;
 }
 
@@ -91,6 +90,13 @@
     [super viewDidLoad];
 }
 */
+
+//
+//
+//
+- (void) viewDidLoad {
+    self.programDisplayOnGraphView.text = [NSString stringWithFormat:@"%d", self.programData];
+}
 
 - (void)viewDidUnload
 {
